@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import clsx from "clsx";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -10,21 +10,12 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import OutlinedInput from "@material-ui/core/OutlinedInput/OutlinedInput";
 import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
-
+import { Context } from "vm";
+import { AuthContext } from "../../context/AuthContext";
+import { useHttp } from "../../hooks/http.hook";
 import "./AuthPage.css";
 
-// const useStyles = makeStyles((theme: Theme) =>
-//   createStyles({
-//     root: {
-//       "& > *": {
-//         margin: theme.spacing(1),
-//         width: "25ch",
-//       },
-//     },
-//   })
-// );
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -61,6 +52,9 @@ interface State {
 
 export default function AuthPge() {
   const classes = useStyles();
+  const auth: Context = useContext(AuthContext);
+  const { loading, request, error, clearError } = useHttp();
+
   const [values, setValues] = useState<State>({
     fname: "",
     sname: "",
@@ -96,7 +90,7 @@ export default function AuthPge() {
       email: "",
       password: "",
       showPassword: false,
-      registration: false,
+      registration: values.registration,
     });
   };
 
@@ -117,7 +111,7 @@ export default function AuthPge() {
       noValidate
       onSubmit={values.registration ? login : registration}
     >
-      <div className={clsx(!values.registration && "registration")}>
+      <div className={clsx(!values.registration && "registration", "column")}>
         <TextField
           id="outlined-required"
           label="First name"
@@ -190,7 +184,7 @@ export default function AuthPge() {
           className={classes.button}
           endIcon={<DeleteIcon />}
         >
-          Cancel
+          Clear
         </Button>
       </div>
     </form>
