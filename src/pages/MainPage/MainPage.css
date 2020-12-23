@@ -1,12 +1,11 @@
 .main__page {
-  display: flex;
   min-width: 260px;
   max-width: 1200px;
   padding: 2px;
 }
 .container {
   margin-top: 20px;
-  padding: 10px 20px 30px;
+  padding: 10px 20px 0px;
   border: orange solid 4px;
   border-radius: 6px;
 }
@@ -22,4 +21,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.container__loyout .ProductCard {
+  margin: 0 10px 30px;
+}
+.container__loyout .ProductCard:first-child {
+  margin-left: 0;
+}
+.container__loyout .ProductCard:last-child {
+  margin-right: 0;
 }
