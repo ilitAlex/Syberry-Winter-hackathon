@@ -126,16 +126,14 @@ export const MainPage = () => {
 
       setData(fetched);
       console.log(fetched);
-      console.log(dirtyData);
     } catch (error) {
       console.log(error);
     }
   }, [token, request]);
 
   useEffect(() => {
-    products();
     getData();
-  }, [dirtyData, data]);
+  }, [getData]);
 
   if (loading) {
     return <CircularProgress />;
