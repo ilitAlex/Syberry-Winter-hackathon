@@ -1,7 +1,10 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import AuthPage from "./pages/AuthPage/AuthPage";
-import MainPage from "./pages/MainPage/MainPage";
+import MainPage from "./components/MainPage/MainPage";
+import Profile from "./components/Profile/Profile";
+
+
 
 export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
@@ -17,6 +20,9 @@ export const useRoutes = (isAuthenticated) => {
         <Route path="/" exact>
           <MainPage />
         </Route>
+          <Route path="/profile" exact>
+              <Profile />
+          </Route>
         <Redirect to="/" />
       </Switch>
     );
@@ -30,6 +36,9 @@ export const useRoutes = (isAuthenticated) => {
       <Route path="/" exact>
         <MainPage />
       </Route>
+        <Route path="/profile" exact>
+            <Profile />
+        </Route>
       <Redirect to="/" />
     </Switch>
   );
