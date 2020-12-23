@@ -1,5 +1,4 @@
 .main__page {
-
   min-width: 260px;
   max-width: 1200px;
   padding: 2px;
@@ -32,4 +31,3 @@
 .container__loyout .ProductCard:last-child {
   margin-right: 0;
 }
-
