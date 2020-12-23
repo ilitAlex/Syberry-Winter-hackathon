@@ -4,6 +4,8 @@ import AuthPage from "./pages/AuthPage/AuthPage";
 import MainPage from "./components/MainPage/MainPage";
 import Profile from "./components/Profile/Profile";
 
+
+
 export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
     return (

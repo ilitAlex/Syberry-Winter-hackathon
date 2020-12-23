@@ -1,35 +1,35 @@
 .main__page {
-    min-width: 260px;
-    max-width: 1200px;
-    padding: 2px;
+
+  min-width: 260px;
+  max-width: 1200px;
+  padding: 2px;
 }
 .container {
-    margin-top: 20px;
-    padding: 10px 20px 0px;
-    border: orange solid 4px;
-    border-radius: 6px;
+  margin-top: 20px;
+  padding: 10px 20px 0px;
+  border: orange solid 4px;
+  border-radius: 6px;
 }
 .container__name {
-    display: block;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 10px;
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 .container__loyout {
-    width: 100%;
-    min-width: 240px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  width: 100%;
+  min-width: 240px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .container__loyout .ProductCard {
-    margin: 0 10px 30px;
+  margin: 0 10px 30px;
 }
 .container__loyout .ProductCard:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 .container__loyout .ProductCard:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
-
 
