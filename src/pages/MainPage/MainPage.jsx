@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
+import { AuthContext } from "../../context/AuthContext";
+import { useHttp } from "../../hooks/http.hook";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import "./MainPage.css";
+import { NavLink } from "react-router-dom";
 const data = [
   {
     name: "Most popular products",
@@ -95,7 +99,45 @@ const data = [
 ];
 
 export const MainPage = () => {
-  console.log(data);
+  const { request, loading } = useHttp();
+  const { token } = useContext(AuthContext);
+  // const [dirtyData, setData] = useState({
+  //   fermers: {},
+  //   products: {},
+  // });
+
+  // //array of products
+  // const products = () => {
+  //   const pr = Object.values(dirtyData.products);
+  //   console.log(pr);
+  //   return pr;
+  // };
+  // const data = products().map(
+  //   (e) => (e = { ...e, ...dirtyData.fermers[e.fermer_id] })
+  // );
+
+  // const getData = useCallback(async () => {
+  //   try {
+  //     const proxyUrl = "https://cors-anywhere.herokuapp.com/",
+  //       targetUrl = "http://kvuzu.ru/api/GetFarmersWithProducts.php";
+  //     const fetched = await request(proxyUrl + targetUrl, "GET", null);
+
+  //     setData(fetched);
+  //     console.log(fetched);
+  //     console.log(dirtyData);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, [token, request]);
+
+  // useEffect(() => {
+  //   products();
+  //   getData();
+  // }, [dirtyData]);
+
+  // if (loading) {
+  //   return <CircularProgress />;
+  // }
 
   return (
     <div className="main__page">
@@ -104,14 +146,16 @@ export const MainPage = () => {
           <div className="container__name">{e.name}</div>
           <div className="container__loyout">
             {e.items.map((item) => (
-              <ProductCard
-                ownerAvatar={item.ownerAvatar}
-                ownerRating={item.ownerRating}
-                name={item.name}
-                price={item.price}
-                valute={item.valute}
-                image={item.image}
-              />
+              <NavLink to={`/product/${item.id}`}>
+                <ProductCard
+                  ownerAvatar={item.ownerAvatar}
+                  ownerRating={item.ownerRating}
+                  name={item.name}
+                  price={item.price}
+                  valute={item.valute}
+                  image={item.image}
+                />
+              </NavLink>
             ))}
           </div>
         </div>
