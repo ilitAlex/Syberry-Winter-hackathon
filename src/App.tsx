@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { useRoutes } from "./routes";
 import { useAuth } from "./hooks/auth.hook";
 import { AuthContext } from "./context/AuthContext";
@@ -20,12 +20,12 @@ const App = () => {
     <AuthContext.Provider
       value={{ login, logout, token, userId, isAuthenticated }}
     >
-      <BrowserRouter>
+      <HashRouter>
         <div className="app-wrapper">
           <Header />
           <div className="app-wrapper-content">{routes}</div>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </AuthContext.Provider>
   );
 };

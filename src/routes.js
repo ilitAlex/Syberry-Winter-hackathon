@@ -23,6 +23,9 @@ export const useRoutes = (isAuthenticated) => {
         <Route path="/" exact>
           <MainPage />
         </Route>
+          <Route path="/profile" exact>
+              <Profile />
+          </Route>
         <Redirect to="/" />
       </Switch>
     );
@@ -40,6 +43,9 @@ export const useRoutes = (isAuthenticated) => {
       <Route path="/" exact>
         <MainPage />
       </Route>
+        <Route path="/profile" exact>
+            <Profile />
+        </Route>
       <Redirect to="/" />
     </Switch>
   );
